@@ -10,15 +10,16 @@
 #define FLUSH while(getchar() != '\n');
 
 // functions headers
-int add(int a, int b);
-int substraction(int a, int b);
-int multiplication(int a, int b);
-int division(int a, int b);
-int gatherInput(int * a, int * b);
+double add(double a, double b);
+double substraction(double a, double b);
+double multiplication(double a, double b);
+double division(double a, double b);
+double gatherInput(double * a, double * b);
 
 // main fuction
 int main(void) {
-	int a, b;
+	double a, b;
+	
 	printf(WELCOMING);
 	printf(PROMPT1);
 	char ans = getchar();
@@ -28,22 +29,22 @@ int main(void) {
 		{
 		case('a'):
 			gatherInput(&a, &b);
-			printf("Total: %d\n", add(a, b));
+			printf("Total: %.2lf\n", add(a, b));
 			break;
 
 		case('s'):
 			gatherInput(&a, &b);
-			printf("Total: %d\n", substraction(a, b));
+			printf("Total: %.2lf\n", substraction(a, b));
 			break;
 
 		case('m'):
 			gatherInput(&a, &b);
-			printf("Total: %d\n", multiplication(a, b));
+			printf("Total: %.2lf\n", multiplication(a, b));
 			break;
 
 		case('d'):
 			gatherInput(&a, &b);
-			printf("Total: %d\n", division(a, b));
+			printf("Total: %.2lf\n", division(a, b));
 			break;
 
 		case('q'):
@@ -62,29 +63,29 @@ int main(void) {
 }
 
 // functions bodies
-int gatherInput(int * a, int * b) {
+double gatherInput(double * a, double * b) {
 	printf(PROMPT_FIRSTVAL);
 	FLUSH;
-	scanf("%d", a);
+	scanf("%lf", a);
 	printf(PROMPT_SECONDVAL);
 	FLUSH;
-	scanf("%d", b);
+	scanf("%lf", b);
 	return 1;
 }
 
-int add(int a, int b) {
+double add(double a, double b) {
 	return a + b;
 }
 
-int substraction(int a, int b) {
+double substraction(double a, double b) {
 	return a - b;
 }
 
-int multiplication(int a, int b) {
+double multiplication(double a, double b) {
 	return a * b;
 }
 
-int division(int a, int b) {
+double division(double a, double b) {
 	if (b != 0)
 	return a / b;
 printf("Division by 0 isn't possible");
