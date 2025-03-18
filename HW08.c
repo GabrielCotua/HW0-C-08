@@ -90,7 +90,7 @@ int gatherInput(float * a, float * b, char operation) {
 
 		while(*b == 0) {
  
-			printf("\nDivision by 0 isn't possible, please try another number\n");
+			printf("\nDivision by 0 isn't possible, please try another number.\n");
 			FLUSH;
 			scanf("%g", b);
 		}
@@ -113,3 +113,27 @@ void checkForInput(int val, float * pVal) {
 	}
  
 }
+
+/*
+ * 		[Verification Plan]
+ *
+ * 	"," means new linee
+ *
+ *	[Input]			[expected output]
+ *	a,			"insert first value: "
+ *
+ *	a, 12,			"Insert first value: 12, Insert second value: "
+ *
+ *	a, 12, 12,		"Insert first value: 12, Insert second value: 12, 12.00 + 12.00 = 24.00"
+ *
+ *	b,			"Try again, b ins't a valid choice"
+ *				( loop until right input )
+ *
+ *	%,			"Try again, % ins't a valid choice"
+ *				( loop until right input )
+ *
+ *	a, a,			"Insert first value: a, Input not valid, please insert a number: "
+ *
+ *	d, 10, 0,		"Insert first value: 10, Insert second value: 0, Division by 0 isn't possible, please try another number."
+ *										( loop until right input )
+ */
