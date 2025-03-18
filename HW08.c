@@ -9,17 +9,13 @@
 #define PROMPT_SECONDVAL "\nInsert second Value: "
 #define FLUSH while(getchar() != '\n');
 
-// functions headers
-double add(double a, double b);
-double substraction(double a, double b);
-double multiplication(double a, double b);
-double division(double a, double b);
-double gatherInput(double * a, double * b);
+// functions declarations
+float gatherInput(float * a, float * b, char operation);
+void checkForInput(int val, float * pVal);
 
 // main fuction
 int main(void) {
-	double a, b;
-	
+	float a, b;
 	printf(WELCOMING);
 	printf(PROMPT1);
 	char ans = getchar();
@@ -28,31 +24,31 @@ int main(void) {
 		switch (tolower(ans))
 		{
 		case('a'):
-			gatherInput(&a, &b);
-			printf("Total: %.2lf\n", add(a, b));
+			gatherInput(&a, &b, 'a');
+			printf("\n\n%.2lf + %.2lf = %.2lf\n", a, b, a + b);
 			break;
 
 		case('s'):
-			gatherInput(&a, &b);
-			printf("Total: %.2lf\n", substraction(a, b));
+			gatherInput(&a, &b, 's');
+			printf("\n\n%.2lf - %.2lf = %.2lf\n", a, b, a - b);
 			break;
 
 		case('m'):
-			gatherInput(&a, &b);
-			printf("Total: %.2lf\n", multiplication(a, b));
+			gatherInput(&a, &b, 'm');
+			printf("\n\n%.2lf * %.2lf = %.2lf\n", a, b, a * b);
 			break;
 
 		case('d'):
-			gatherInput(&a, &b);
-			printf("Total: %.2lf\n", division(a, b));
+			gatherInput(&a, &b, 'd');
+			printf("\n\n%.2lf / %.2lf = %.2lf\n", a, b, a/b);
 			break;
 
 		case('q'):
-			printf("Bye bye.");
+			printf("\nBye bye.\n");
 			return 1;
 
 		default:
-			printf("Try again, %c isn't a valid choice", ans);
+			printf("\nTry again, %c isn't a valid choice\n", ans);
 			break;
 		}
 		printf("\n\n"PROMPT1);
@@ -62,32 +58,30 @@ int main(void) {
 	return 1;
 }
 
-// functions bodies
-double gatherInput(double * a, double * b) {
+// functions definitions
+float gatherInput(float * a, float * b, char operation) {
 	printf(PROMPT_FIRSTVAL);
 	FLUSH;
-	scanf("%lf", a);
+	checkForInput(scanf("%g", a), a);
 	printf(PROMPT_SECONDVAL);
 	FLUSH;
-	scanf("%lf", b);
+	checkForInput(scanf("%g", b), b);
+	if (operation == 'd' && *b == 0) {
+		while(*b == 0) {
+			printf("\nDivision by 0 isn't possible, please try another number\n");
+			FLUSH;
+			scanf("%g", b);
+		}
+	}
 	return 1;
 }
-
-double add(double a, double b) {
-	return a + b;
-}
-
-double substraction(double a, double b) {
-	return a - b;
-}
-
-double multiplication(double a, double b) {
-	return a * b;
-}
-
-double division(double a, double b) {
-	if (b != 0)
-	return a / b;
-printf("Division by 0 isn't possible");
-return 0;
+void checkForInput(int val, float * pVal) {
+	if ( val == 0 ) {
+		printf("\nInput not valid, please insert a number: ");
+		FLUSH;
+		while( scanf("%g", pVal) != 1) {
+		printf("\nInput not valid, please insert a number: ");
+		FLUSH;
+		}
+	}
 }
