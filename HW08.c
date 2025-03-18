@@ -6,17 +6,17 @@
 
 // macros
 #define GABRIEL "\n\n|#####################|\n|HW #08, Gabriel Cotua|\n|#####################|\n\n"
-#define WELCOMING "Welcome ot the calculator.\n"
-#define PROMPT1 "What would you like to do? \n    (a) add \n    (s) substraction \n    (m) multiplication \n    (d) division \n    (q) quit\n"
+#define WELCOMING "Welcome to the calculator.\n"
+#define PROMPT1 "What would you like to do? \n    (a) add \n    (s) subtraction \n    (m) multiplication \n    (d) division \n    (q) quit\n"
 #define PROMPT_FIRSTVAL "\nInsert first value: "
-#define PROMPT_SECONDVAL "\nInsert second Value: "
-#define FLUSH while(getchar() != '\n');
+#define PROMPT_SECONDVAL "\nInsert second value: "
+#define FLUSH while(getchar() != '\n' && getchar() != EOF);
 
 // functions declarations
-float gatherInput(float * a, float * b, char operation);
+void gatherInput(float * a, float * b, char operation);
 void checkForInput(int val, float * pVal);
 
-// main fuction
+// main function
 int main(void) {
 	float a, b;
 	printf(GABRIEL);
@@ -29,27 +29,23 @@ int main(void) {
 		{
 		case('a'):
 			gatherInput(&a, &b, 'a');
-			printf("\n\n%.2lf + %.2lf = %.2lf\n", a, b, a + b);
+			printf("\n\n%.2f + %.2f = %.2f\n", a, b, a + b);
 			break;
 
 		case('s'):
 			gatherInput(&a, &b, 's');
-			printf("\n\n%.2lf - %.2lf = %.2lf\n", a, b, a - b);
+			printf("\n\n%.2f - %.2f = %.2f\n", a, b, a - b);
 			break;
 
 		case('m'):
 			gatherInput(&a, &b, 'm');
-			printf("\n\n%.2lf * %.2lf = %.2lf\n", a, b, a * b);
+			printf("\n\n%.2f * %.2f = %.2f\n", a, b, a * b);
 			break;
 
 		case('d'):
 			gatherInput(&a, &b, 'd');
-			printf("\n\n%.2lf / %.2lf = %.2lf\n", a, b, a/b);
+			printf("\n\n%.2f / %.2f = %.2f\n", a, b, a / b);
 			break;
-
-		case('q'):
-			printf("\nBye bye.\n");
-			return 1;
 
 		default:
 			printf("\nTry again, %c isn't a valid choice\n", ans);
@@ -59,11 +55,12 @@ int main(void) {
 		FLUSH;
 	 	ans = getchar();
 	}
+	printf("\nBye, bye.\n");
 	return 1;
 }
 
 // functions definitions
-float gatherInput(float * a, float * b, char operation) {
+void gatherInput(float * a, float * b, char operation) {
 	printf(PROMPT_FIRSTVAL);
 	FLUSH;
 	checkForInput(scanf("%g", a), a);
@@ -77,7 +74,6 @@ float gatherInput(float * a, float * b, char operation) {
 			scanf("%g", b);
 		}
 	}
-	return 1;
 }
 void checkForInput(int val, float * pVal) {
 	if ( val == 0 ) {
