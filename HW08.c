@@ -125,6 +125,9 @@ void checkForInput(int val, float * pVal) {
  *	a, 12,			"Insert first value: 12, Insert second value: "
  *
  *	a, 12, 12,		"Insert first value: 12, Insert second value: 12, 12.00 + 12.00 = 24.00"
+ *	
+ *	m, 9999999, 999999	"Insert first value: 9999999, Insert second value: 999999, 
+ *					1e+07 * 999999 = 9.99999e+12"	
  *
  *	b,			"Try again, b ins't a valid choice"
  *				( loop until right input )
