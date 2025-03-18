@@ -35,25 +35,25 @@ int main(void) {
 		case('a'):
  
 			gatherInput(&a, &b, 'a');
-			printf("\n\n%.2lf + %.2lf = %.2lf\n", a, b, a + b);
+			printf("\n\n%g + %g = %g\n", a, b, a + b);
 			break;
  
 		case('s'):
  
 			gatherInput(&a, &b, 's');
-			printf("\n\n%.2lf - %.2lf = %.2lf\n", a, b, a - b);
+			printf("\n\n%g - %g = %g\n", a, b, a - b);
 			break;
  
 		case('m'):
  
 			gatherInput(&a, &b, 'm');
-			printf("\n\n%.2lf * %.2lf = %.2lf\n", a, b, a * b);
+			printf("\n\n%g * %g = %g\n", a, b, a * b);
 			break;
  
 		case('d'):
  
 			gatherInput(&a, &b, 'd');
-			printf("\n\n%.2lf / %.2lf = %.2lf\n", a, b, a/b);
+			printf("\n\n%g / %g = %g\n", a, b, a/b);
 			break;
 
 		case('q'):
