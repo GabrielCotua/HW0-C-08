@@ -1,8 +1,11 @@
+// HW 08 Gabriel Cotua
+
 // libraries
 #include <stdio.h>
 #include <ctype.h>
 
 // macros
+#define GABRIEL "\n\n|#####################|\n|HW #08, Gabriel Cotua|\n|#####################|\n\n"
 #define WELCOMING "Welcome ot the calculator.\n"
 #define PROMPT1 "What would you like to do? \n    (a) add \n    (s) substraction \n    (m) multiplication \n    (d) division \n    (q) quit\n"
 #define PROMPT_FIRSTVAL "\nInsert first value: "
@@ -16,6 +19,7 @@ void checkForInput(int val, float * pVal);
 // main fuction
 int main(void) {
 	float a, b;
+	printf(GABRIEL);
 	printf(WELCOMING);
 	printf(PROMPT1);
 	char ans = getchar();
