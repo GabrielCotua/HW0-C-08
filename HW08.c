@@ -23,6 +23,7 @@ int main(void) {
 	printf(WELCOMING);
 	printf(PROMPT1);
 	char ans = getchar();
+	FLUSH;
 	while(ans != 'q') {
 
 		switch (tolower(ans))
